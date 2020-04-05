@@ -33,10 +33,7 @@ public class WebController {
         try {
             LOGGER.info("Begin creating a new user.");
             UserEntity userEntity = Converter.convertUserDTO2UserEntity(userDTO);
-
-            //allUsers.add(userEntity);
             userManager.saveUser2DB(userEntity);
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -46,10 +43,7 @@ public class WebController {
     @RequestMapping(value = "/readAllUsers", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public List<UserEntity> readAllUsers() {
 
-        
         List<UserEntity> list = (List<UserEntity>) userManager.findAll();
         return list;
-
-
     }
 }
