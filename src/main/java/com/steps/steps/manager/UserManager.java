@@ -5,6 +5,9 @@ import com.steps.steps.models.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class UserManager {
 
@@ -14,5 +17,14 @@ public class UserManager {
     public void saveUser2DB(UserEntity user) {
 
         userEntityRepository.save(user);
+    }
+
+    public List<UserEntity> findAll() {
+
+        List<UserEntity> ls = (List<UserEntity>) userEntityRepository.findAll();
+        return ls;
+
+
+
     }
 }
