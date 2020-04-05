@@ -18,13 +18,14 @@ public class UserManager {
 
         userEntityRepository.save(user);
     }
+    public void deleteUser2DB(UserEntity user) {
+
+        userEntityRepository.delete(user);
+    }
 
     public List<UserEntity> findAll() {
 
         List<UserEntity> ls = (List<UserEntity>) userEntityRepository.findAll();
         return ls;
-
-
-
     }
 }

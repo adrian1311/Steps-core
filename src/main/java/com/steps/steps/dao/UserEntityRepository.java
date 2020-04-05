@@ -15,4 +15,7 @@ public interface UserEntityRepository extends CrudRepository<UserEntity, String>
     @Query(value = "SELECT * FROM users WHERE username = :username", nativeQuery = true)
     UserEntity findByUsername(@Param("username") String username);
 
+    @Query(value = "DELETE FROM users WHERE username = :username", nativeQuery = true)
+    UserEntity deleteUserEntity(@Param("username") String username);
+
 }

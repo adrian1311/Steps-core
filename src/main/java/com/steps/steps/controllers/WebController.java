@@ -39,10 +39,19 @@ public class WebController {
             e.printStackTrace();
         }
     }
+    @RequestMapping(value = "/deleteUser", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    @Transactional
+    public void deleteUser(@RequestBody UserDTO userDTO) {
+
+        LOGGER.info("Delete user from BD");
+        UserEntity userEntity = Converter.convertUserDTO2UserEntity(userDTO);
+        userManager.deleteUser2DB(userEntity);
+    }
 
     @RequestMapping(value = "/readAllUsers", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public List<UserEntity> readAllUsers() {
 
+        LOGGER.info("Trying to show all users.");
         List<UserEntity> list = (List<UserEntity>) userManager.findAll();
         return list;
     }
