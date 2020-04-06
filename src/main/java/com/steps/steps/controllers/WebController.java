@@ -2,10 +2,12 @@ package com.steps.steps.controllers;
 
 import com.steps.steps.converter.Converter;
 
+import com.steps.steps.manager.FlyManager;
 import com.steps.steps.manager.UserManager;
-import com.steps.steps.models.UserDTO;
-import com.steps.steps.models.UserEntity;
-import org.hibernate.NonUniqueResultException;
+import com.steps.steps.models.dto.FlyDTO;
+import com.steps.steps.models.entity.FlyEntity;
+import com.steps.steps.models.dto.UserDTO;
+import com.steps.steps.models.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -26,6 +27,8 @@ public class WebController {
 
     @Autowired
     private UserManager userManager;
+    @Autowired
+    private FlyManager flyManager;
 
     @RequestMapping(value = "/createUser", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     @Transactional
@@ -54,5 +57,18 @@ public class WebController {
         LOGGER.info("Trying to show all users.");
         List<UserEntity> list = (List<UserEntity>) userManager.findAll();
         return list;
+    }
+
+    @RequestMapping(value = "/createFly", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    @Transactional
+    public void createFly(@RequestBody FlyDTO flyDTO) {
+        try {
+            LOGGER.info("Begin creating a new fly");
+            FlyEntity flyEntity = Converter.convertFlyDTO2FlyEntity(flyDTO);
+            flyManager.saveFly2DB(flyEntity);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

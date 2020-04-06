@@ -3,7 +3,7 @@ package com.steps.steps.dao;
 
 
 
-import com.steps.steps.models.UserEntity;
+import com.steps.steps.models.entity.UserEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

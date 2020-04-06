@@ -1,4 +1,4 @@
-package com.steps.steps.models;
+package com.steps.steps.models.entity;
 
 import org.hibernate.envers.Audited;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;

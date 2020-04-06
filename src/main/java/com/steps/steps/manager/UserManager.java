@@ -1,11 +1,10 @@
 package com.steps.steps.manager;
 
 import com.steps.steps.dao.UserEntityRepository;
-import com.steps.steps.models.UserEntity;
+import com.steps.steps.models.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
