@@ -19,7 +19,7 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 @RequestMapping(value = "/api")
 public class WebController {
     Logger LOGGER = LoggerFactory.getLogger(WebController.class);
@@ -71,4 +71,17 @@ public class WebController {
             e.printStackTrace();
         }
     }
+    @RequestMapping(value = "/searchFly", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @Transactional
+    public List<FlyEntity> searchFly(@RequestBody FlyDTO flyDTO) {
+
+            LOGGER.info("Searching....");
+            FlyEntity flyEntity = Converter.convertFlyDTO2FlyEntity(flyDTO);
+            String desde = flyEntity.getFrom_city("");
+            String hacia = flyEntity.getTo_city("");
+            List<FlyEntity> list = (List<FlyEntity>) flyManager.searchFly(desde,hacia);
+        LOGGER.info(list.toString());
+            return list;
+    }
+
 }
