@@ -71,15 +71,13 @@ public class WebController {
             e.printStackTrace();
         }
     }
-    @RequestMapping(value = "/searchFly", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @RequestMapping(value = "/searchFly", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     @Transactional
     public List<FlyEntity> searchFly(@RequestBody FlyDTO flyDTO) {
 
             LOGGER.info("Searching....");
             FlyEntity flyEntity = Converter.convertFlyDTO2FlyEntity(flyDTO);
-            String desde = flyEntity.getFrom_city("");
-            String hacia = flyEntity.getTo_city("");
-            List<FlyEntity> list = (List<FlyEntity>) flyManager.searchFly(desde,hacia);
+            List<FlyEntity> list = (List<FlyEntity>) flyManager.searchFly(flyEntity.getFrom_city(),flyEntity.getTo_city());
         LOGGER.info(list.toString());
             return list;
     }

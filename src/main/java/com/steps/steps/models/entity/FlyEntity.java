@@ -32,32 +32,32 @@ public class FlyEntity {
         this.id = id;
     }
 
-    public String getFrom_city(String from_city) {
-        return this.from_city;
+    public String getFrom_city() {
+        return from_city;
     }
 
     public void setFrom_city(String from_city) {
         this.from_city = from_city;
     }
 
-    public String getTo_city(String to_city) {
-        return this.to_city;
+    public String getTo_city() {
+        return to_city;
     }
 
     public void setTo_city(String to_city) {
         this.to_city = to_city;
     }
 
-    public Integer getSeats(Integer seats) {
-        return this.seats;
+    public Integer getSeats() {
+        return seats;
     }
 
     public void setSeats(Integer seats) {
         this.seats = seats;
     }
 
-    public Double getPrice(Double price) {
-        return this.price;
+    public Double getPrice() {
+        return price;
     }
 
     public void setPrice(Double price) {
