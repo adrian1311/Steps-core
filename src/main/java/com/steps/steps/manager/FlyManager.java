@@ -25,4 +25,8 @@ public class FlyManager {
         List<FlyEntity> ls = (List<FlyEntity>) flyEntityRepository.findFly(desde,hacia);
         return ls;
     }
+
+    public void changeFly(Long id, Integer seats, Double price) {
+        flyEntityRepository.changeFly(id,seats,price);
+    }
 }

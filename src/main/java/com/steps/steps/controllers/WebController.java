@@ -78,8 +78,13 @@ public class WebController {
             LOGGER.info("Searching....");
             FlyEntity flyEntity = Converter.convertFlyDTO2FlyEntity(flyDTO);
             List<FlyEntity> list = (List<FlyEntity>) flyManager.searchFly(flyEntity.getFrom_city(),flyEntity.getTo_city());
-        LOGGER.info(list.toString());
             return list;
     }
-
+    @RequestMapping(value ="changeFly",produces = MediaType.APPLICATION_JSON_VALUE,method = RequestMethod.POST)
+    @Transactional
+    public void changeFly(@RequestBody FlyDTO flyDTO){
+        LOGGER.info("Saving changed fly");
+        FlyEntity flyEntity = Converter.convertFlyDTO2FlyEntity(flyDTO);
+        flyManager.changeFly(flyEntity.getId(),flyEntity.getSeats(),flyEntity.getPrice());
+    }
 }

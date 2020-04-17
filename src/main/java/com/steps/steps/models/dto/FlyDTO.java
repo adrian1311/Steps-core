@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class FlyDTO {
 
+    @JsonProperty(value="id")
+    private Long id;
     @JsonProperty(value = "from_city")
     private String from_city;
     @JsonProperty(value = "to_city")
@@ -14,6 +16,14 @@ public class FlyDTO {
     private Double price;
 
     public FlyDTO() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFrom_city() {
